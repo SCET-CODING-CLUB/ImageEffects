@@ -1,6 +1,6 @@
-# Chromatic-Aberration
+# Image Effects
 
-**Chromatic-Aberration** is a Java project developed by Nexus Coding Club designed to simulate and correct chromatic aberration in digital images. Chromatic aberration, or color fringing, occurs when a lens fails to focus all colors at the same point, resulting in color distortions.
+**Image Effect** is a Java project developed by Nexus Coding Club designed to simulate and correct chromatic aberration in digital images. Chromatic aberration, or color fringing, occurs when a lens fails to focus all colors at the same point, resulting in color distortions.
 
 ## Features
 
