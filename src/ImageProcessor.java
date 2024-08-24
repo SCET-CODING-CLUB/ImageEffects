@@ -7,7 +7,7 @@ public class ImageProcessor extends JPanel{
 
     final static int WIDTH = 600;
     final static int HEIGHT = 600;
-    BufferedImage img1, imgBlur, imgAberrate;
+    BufferedImage img1, imgBlur, imgAberrate, imgGreyscale;
 
     ImageProcessor() throws IOException{
         
@@ -23,6 +23,7 @@ public class ImageProcessor extends JPanel{
             0, 1,
             1, 0,
             5);
+        imgGreyscale = Trasform.greyscale(img1);
 
     }
 
@@ -32,9 +33,10 @@ public class ImageProcessor extends JPanel{
     }
 
     void draw(Graphics g){
-        g.drawImage(img1, 0, 0, null);
-        g.drawImage(imgBlur, 0, 0, null);
+        // g.drawImage(img1, 0, 0, null);
+        // g.drawImage(imgBlur, 0, 0, null);
         // g.drawImage(imgAberrate, 0, 0, null);
+        g.drawImage(imgGreyscale, 0, 0, null);
     }
 
 }
