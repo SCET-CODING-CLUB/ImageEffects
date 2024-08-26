@@ -1,7 +1,7 @@
 // import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public final class Trasform {
+public final class Effects {
 
     public static BufferedImage greyscale(BufferedImage image){
 
@@ -42,12 +42,12 @@ public final class Trasform {
                     }
                 }
 
-                r = (r / count);
-                g = (g / count);
-                b = (b / count);
+                int rAvg = (r / count);
+                int gAvg = (g / count);
+                int bAvg = (b / count);
 
-                int[] argb = IOImage.getRGB(image, x, y);
-                IOImage.setRGB(output, x, y, argb[0], r, g, b);
+                int alpha = IOImage.getRGB(image, x, y)[0];
+                IOImage.setRGB(output, x, y, alpha, rAvg, gAvg, bAvg);
             }
         }
 
@@ -61,7 +61,6 @@ public final class Trasform {
                             int bDirX, int bDirY,
                             int offset){
         
-        // TODO
         int w = image.getWidth();
         int h = image.getHeight();
         BufferedImage output = new BufferedImage(
@@ -70,29 +69,28 @@ public final class Trasform {
         for (int y = 0; y < h; y++){
             for (int x = 0; x < w; x++){
 
-                int[] argbSrc = IOImage.getRGB(image, x, y);
-                int[] argbOut;
+                int red = 0, green = 0, blue = 0;
                 
-                int redX = x+rDirX*offset;
-                int redY = y+rDirY*offset;
+                int redX = x-rDirX*offset;
+                int redY = y-rDirY*offset;
                 if (redX >= 0 && redX < w && redY >= 0 && redY < h){
-                    argbOut = IOImage.getRGB(output, redX, redY);
-                    IOImage.setRGB(output, redX, redY, argbOut[0], argbSrc[1], argbOut[2], argbOut[3]);
+                    red = IOImage.getRGB(image, redX, redY)[1];
                 }
                 
-                int greenX = x+gDirX*offset;
-                int greenY = y+gDirY*offset;
+                int greenX = x-gDirX*offset;
+                int greenY = y-gDirY*offset;
                 if (greenX >= 0 && greenX < w && greenY >= 0 && greenY < h){
-                    argbOut = IOImage.getRGB(output, greenX, greenY);
-                    IOImage.setRGB(output, greenX, greenY, argbOut[0], argbOut[1], argbSrc[2], argbOut[3]);
+                    green = IOImage.getRGB(image, greenX, greenY)[2];
                 }
                 
-                int blueX = x+bDirX*offset;
-                int blueY = y+bDirY*offset;
+                int blueX = x-bDirX*offset;
+                int blueY = y-bDirY*offset;
                 if (blueX >= 0 && blueX < w && blueY >= 0 && blueY < h){
-                    argbOut = IOImage.getRGB(output, blueX, blueY);
-                    IOImage.setRGB(output, blueX, blueY, argbOut[0], argbOut[1], argbOut[2], argbSrc[3]);
+                    blue = IOImage.getRGB(image, blueX, blueY)[3];
                 }
+
+                int alpha = IOImage.getRGB(image, x, y)[0];
+                IOImage.setRGB(output, x, y, alpha, red, green, blue);
 
             }
         }

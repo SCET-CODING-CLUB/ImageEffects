@@ -2,29 +2,44 @@ import java.awt.*;
 import java.io.IOException;
 import java.awt.image.BufferedImage;
 import javax.swing.*;
+import java.util.HashMap;
 
 public class ImageProcessor extends JPanel{
 
     final static int WIDTH = 600;
     final static int HEIGHT = 600;
-    BufferedImage img1, imgBlur, imgAberrate, imgGreyscale;
+    BufferedImage original;
+    HashMap<String, BufferedImage> imageMap;
+    String selectedEffect = "Original";
 
     ImageProcessor() throws IOException{
         
-        setBackground(Color.darkGray);
+        setBackground(Color.lightGray);
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         setFocusable(true);
 
         // image
-        img1 = IOImage.loadImage("./src/test.png");
-        imgBlur = Trasform.boxBlur(img1, 5);
-        imgAberrate = Trasform.chromaticAberrate(
-            img1, -1, 0,
+        {
+        original = IOImage.loadImage("./src/test.png");
+        BufferedImage boxBlur = Effects.boxBlur(original, 5);
+        BufferedImage chromaticAberrate = Effects.chromaticAberrate(
+            original, -1, 0,
             0, 1,
             1, 0,
             5);
-        imgGreyscale = Trasform.greyscale(img1);
+        BufferedImage greyscale = Effects.greyscale(original);
 
+        imageMap = new HashMap<>();
+        imageMap.put(selectedEffect, original);
+        imageMap.put("Greyscale", greyscale);
+        imageMap.put("Box Blur", boxBlur);
+        imageMap.put("Chromatic Aberrate", chromaticAberrate);
+        }
+
+    }
+
+    public Object[] getEffectNames(){
+        return imageMap.keySet().toArray();
     }
 
     public void paintComponent(Graphics g){
@@ -33,10 +48,7 @@ public class ImageProcessor extends JPanel{
     }
 
     void draw(Graphics g){
-        // g.drawImage(img1, 0, 0, null);
-        // g.drawImage(imgBlur, 0, 0, null);
-        // g.drawImage(imgAberrate, 0, 0, null);
-        g.drawImage(imgGreyscale, 0, 0, null);
+        g.drawImage(imageMap.get(selectedEffect), 0, 0, null);
     }
 
 }
