@@ -105,11 +105,11 @@ public final class Effects {
         int h = image.getHeight();
         BufferedImage output = new BufferedImage(
             w, h, BufferedImage.TYPE_INT_ARGB);
-            for (int i = 0; i < h; i++)
+            for (int y = 0; y < h; y++)
             {
-                for (int j = 0; j < w; j++)
+                for (int x = 0; x < w; x++)
                 {
-                    int[] rgb = IOImage.getRGB(image, i, j);
+                    int[] rgb = IOImage.getRGB(image, x, y);
                         int red = rgb[1];
                         int green = rgb[2];
                         int blue = rgb[3];
@@ -123,7 +123,7 @@ public final class Effects {
                     newBlue = Math.min(255, Math.max(0, newBlue));
 
                     
-                    IOImage.setRGB(output, i, j, rgb[0], newRed, newGreen, newBlue);
+                    IOImage.setRGB(output, x, y, rgb[0], newRed, newGreen, newBlue);
                     
 
                 }
