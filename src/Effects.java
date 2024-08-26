@@ -99,7 +99,7 @@ public final class Effects {
 
     }
 
-    // add sepia effect by ayaan
+    // add sepia ffect by ayaan
     public static BufferedImage sepia(BufferedImage image){
         int w = image.getWidth();
         int h = image.getHeight();
