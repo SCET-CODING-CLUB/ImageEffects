@@ -99,4 +99,40 @@ public final class Effects {
 
     }
 
+    // add sepia effect by ayaan
+    public static BufferedImage sepia(BufferedImage image){
+        int w = image.getWidth();
+        int h = image.getHeight();
+        BufferedImage output = new BufferedImage(
+            w, h, BufferedImage.TYPE_INT_ARGB);
+            for (int y = 0; y < h; y++)
+            {
+                for (int x = 0; x < w; x++)
+                {
+                    int[] rgb = IOImage.getRGB(image, x, y);
+                    int red = rgb[1];
+                    int green = rgb[2];
+                    int blue = rgb[3];
+                    
+                    int newRed =(int) ( 0.393 * red + 0.769 * green + 0.189 * blue);
+                    int newGreen = (int) (0.349 * red + 0.686 * green + 0.168 * blue);
+                    int newBlue = (int) (0.272 * red + 0.534 * green + 0.131 * blue);
+                    
+                    newRed = Math.min(255, newRed);
+                    newGreen = Math.min(255,  newGreen);
+                    newBlue = Math.min(255, newBlue);
+
+                    
+                    IOImage.setRGB(output, x, y, rgb[0], newRed, newGreen, newBlue);
+                    
+
+                }
+            }
+        
+
+        return output;
+    }
+
+
+
 }
