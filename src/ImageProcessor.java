@@ -23,15 +23,17 @@ public class ImageProcessor extends JPanel{
         original = IOImage.loadImage("./src/test.png");
         BufferedImage boxBlur = Effects.boxBlur(original, 5);
         BufferedImage chromaticAberrate = Effects.chromaticAberrate(
-            original, -1, 0,
+           original, -1, 0,
             0, 1,
             1, 0,
             5);
         BufferedImage greyscale = Effects.greyscale(original);
+         BufferedImage sepia = Effects.sepia(original);
 
         imageMap = new HashMap<>();
         imageMap.put(selectedEffect, original);
         imageMap.put("Greyscale", greyscale);
+        imageMap.put("Sepia",sepia);
         imageMap.put("Box Blur", boxBlur);
         imageMap.put("Chromatic Aberrate", chromaticAberrate);
         }
