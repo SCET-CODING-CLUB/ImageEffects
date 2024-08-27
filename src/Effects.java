@@ -173,14 +173,9 @@ public final class Effects {
                 for( int x = 0; x < h; x++){
     
                     int[] argb = IOImage.getRGB(image, x, y);
-                    int red = argb[1];
-                    int green = argb[2];
-                    int blue = argb[3];
+                  
 
-                    int newRed = 0;
-                    int newBlue = 0;
-
-                IOImage.setRGB(output, x, y, argb[0], newRed, argb[2], newBlue);
+                IOImage.setRGB(output, x, y, argb[0], 0, argb[2], 0);
 
                 }
             }    
