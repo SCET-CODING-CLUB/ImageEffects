@@ -139,9 +139,24 @@ public final class Effects {
         int h = image.getHeight();
         BufferedImage output = new BufferedImage(
             w, h, BufferedImage.TYPE_INT_ARGB);
-
         
-        // TODO
+        for(int y = 0; y < w; y++){
+            for( int x = 0; x < h; x++){
+
+                int[] argb = IOImage.getRGB(image, x, y);
+                int red = argb[1];
+                int green = argb[2];
+                int blue = argb[3];
+
+                int newRed = 255 - red;
+                int newGreen = 255 - green;
+                int newBlue = 255 - blue;
+
+                IOImage.setRGB(output, x, y, argb[0], newRed, newGreen, newBlue);
+                
+            }
+        }
+
         return output;
 
     }
