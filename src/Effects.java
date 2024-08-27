@@ -133,6 +133,19 @@ public final class Effects {
         return output;
     }
 
+    public static BufferedImage invert(BufferedImage image){
+
+        int w = image.getWidth();
+        int h = image.getHeight();
+        BufferedImage output = new BufferedImage(
+            w, h, BufferedImage.TYPE_INT_ARGB);
+
+        
+        // TODO
+        return output;
+
+    }
+
 
 
 }

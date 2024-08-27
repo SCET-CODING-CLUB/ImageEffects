@@ -28,12 +28,14 @@ public class ImageProcessor extends JPanel{
             1, 0,
             5);
         BufferedImage sepia = Effects.sepia(original);
+        BufferedImage invert = Effects.invert(original);
         BufferedImage greyscale = Effects.greyscale(original);
 
         imageMap = new HashMap<>();
         imageMap.put(selectedEffect, original);
         imageMap.put("Greyscale", greyscale);
         imageMap.put("Sepia", sepia);
+        imageMap.put("Invert", invert);
         imageMap.put("Box Blur", boxBlur);
         imageMap.put("Chromatic Aberrate", chromaticAberrate);
         }
