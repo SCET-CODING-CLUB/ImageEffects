@@ -6,8 +6,8 @@ import javax.swing.*;
 
 public class App {
 
-    final static int WIDTH = 600;
-    final static int HEIGHT = 675;
+    final static int WIDTH = 700;
+    final static int HEIGHT = 475;
     public static void main(String[] args) throws Exception {
 
         // frame

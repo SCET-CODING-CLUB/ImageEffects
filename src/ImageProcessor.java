@@ -6,8 +6,8 @@ import java.util.HashMap;
 
 public class ImageProcessor extends JPanel{
 
-    final static int WIDTH = 600;
-    final static int HEIGHT = 600;
+    final static int WIDTH = 700;
+    final static int HEIGHT = 400;
     BufferedImage original;
     HashMap<String, BufferedImage> imageMap;
     String selectedEffect = "Original";
