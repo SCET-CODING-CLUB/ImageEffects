@@ -10,8 +10,18 @@ public final class Effects {
         BufferedImage output = new BufferedImage(
             w, h, BufferedImage.TYPE_INT_ARGB);
 
+            for(int y = 0; y < w; y++){
+                for( int x = 0; x < h; x++){
+    
+                    int[] argb = IOImage.getRGB(image, x, y);
+                    
+                    int greyColor = (argb[1] + argb[2] + argb[3]) / 3;
+    
+                    IOImage.setRGB(output, x, y, argb[0], greyColor, greyColor, greyColor);
+                    
+                }
+            }
         
-        // TODO
         return output;
 
     }
@@ -109,10 +119,10 @@ public final class Effects {
             {
                 for (int x = 0; x < w; x++)
                 {
-                    int[] rgb = IOImage.getRGB(image, x, y);
-                    int red = rgb[1];
-                    int green = rgb[2];
-                    int blue = rgb[3];
+                    int[] argb = IOImage.getRGB(image, x, y);
+                    int red = argb[1];
+                    int green = argb[2];
+                    int blue = argb[3];
                     
                     int newRed =(int) ( 0.393 * red + 0.769 * green + 0.189 * blue);
                     int newGreen = (int) (0.349 * red + 0.686 * green + 0.168 * blue);
@@ -123,7 +133,7 @@ public final class Effects {
                     newBlue = Math.min(255, newBlue);
 
                     
-                    IOImage.setRGB(output, x, y, rgb[0], newRed, newGreen, newBlue);
+                    IOImage.setRGB(output, x, y, argb[0], newRed, newGreen, newBlue);
                     
 
                 }
@@ -144,13 +154,10 @@ public final class Effects {
             for( int x = 0; x < h; x++){
 
                 int[] argb = IOImage.getRGB(image, x, y);
-                int red = argb[1];
-                int green = argb[2];
-                int blue = argb[3];
 
-                int newRed = 255 - red;
-                int newGreen = 255 - green;
-                int newBlue = 255 - blue;
+                int newRed = 255 - argb[1];
+                int newGreen = 255 - argb[2];
+                int newBlue = 255 - argb[3];
 
                 IOImage.setRGB(output, x, y, argb[0], newRed, newGreen, newBlue);
                 
