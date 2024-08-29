@@ -10,8 +10,8 @@ public final class Effects {
         BufferedImage output = new BufferedImage(
             w, h, BufferedImage.TYPE_INT_ARGB);
 
-            for(int y = 0; y < w; y++){
-                for( int x = 0; x < h; x++){
+            for(int y = 0; y < h; y++){
+                for( int x = 0; x < w; x++){
     
                     int[] argb = IOImage.getRGB(image, x, y);
                     
@@ -150,8 +150,8 @@ public final class Effects {
         BufferedImage output = new BufferedImage(
             w, h, BufferedImage.TYPE_INT_ARGB);
         
-        for(int y = 0; y < w; y++){
-            for( int x = 0; x < h; x++){
+        for(int y = 0; y < h; y++){
+            for( int x = 0; x < w; x++){
 
                 int[] argb = IOImage.getRGB(image, x, y);
 
