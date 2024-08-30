@@ -2,6 +2,7 @@
 
 **Image Effect** is a Java project developed by Nexus Coding Club designed to simulate and correct chromatic aberration in digital images. Chromatic aberration, or color fringing, occurs when a lens fails to focus all colors at the same point, resulting in color distortions.
 
+
 ## Features
 
 - **Simulation Engine**: Models the effect of chromatic aberration on images.
